@@ -1,0 +1,87 @@
+# Entity: timestamp
+
+main: kit: entity: timestamp: {
+
+  alias: field: {}
+
+  name: "timestamp"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 500
+                kind: "query"
+                name: "interval"
+                orig: "interval"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/time/events"
+          parts: [
+            "time"
+            "events"
+          ]
+          select: {
+            exist: [
+              "interval"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: 500
+                kind: "query"
+                name: "interval"
+                orig: "interval"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/time/socket"
+          parts: [
+            "time"
+            "socket"
+          ]
+          select: {
+            exist: [
+              "interval"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/time.css"
+          parts: [
+            "time.css"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

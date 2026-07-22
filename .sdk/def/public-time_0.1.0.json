@@ -1,0 +1,341 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Public Time API",
+    "description": "This API provides the current timestamp in various formats, including text, JSON, and CSS custom properties. It supports different endpoints for specific use cases, such as returning UNIX timestamps or sending periodic updates via Server-Sent Events and WebSockets.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "url": "https://zenn.dev/siyukatu/articles/public-time-api?locale=en"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://public-api.siyukatu.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/time.txt": {
+      "get": {
+        "summary": "Return UNIX Timestamp (Plain text)",
+        "description": "Returns the current UNIX timestamp in text format with Content-Type: text/vnd.sykt-api header.",
+        "operationId": "getTimestampText",
+        "tags": [
+          "Timestamp"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned current UNIX timestamp in text format",
+            "content": {
+              "text/vnd.sykt-api": {
+                "schema": {
+                  "type": "string",
+                  "example": "1234567890123"
+                },
+                "example": "1234567890123"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/time.json": {
+      "get": {
+        "summary": "Return UNIX Timestamp (JSON)",
+        "description": "Returns the current UNIX timestamp in JSON format with Content-Type: application/json header.",
+        "operationId": "getTimestampJson",
+        "tags": [
+          "Timestamp"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned current UNIX timestamp in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "time": {
+                      "type": "integer",
+                      "format": "int64",
+                      "description": "The current UNIX timestamp in milliseconds",
+                      "example": 1234567890123
+                    }
+                  },
+                  "required": [
+                    "time"
+                  ]
+                },
+                "example": {
+                  "time": 1234567890123
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/time.css": {
+      "get": {
+        "summary": "Return Timestamp as CSS Custom Property",
+        "description": "Returns the current time as a CSS custom property. This endpoint sets --timestamp on :root, allowing you to reference var(--timestamp) within your page.",
+        "operationId": "getTimestampCss",
+        "tags": [
+          "Timestamp"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned current timestamp as CSS custom property",
+            "content": {
+              "text/css": {
+                "schema": {
+                  "type": "string",
+                  "example": ":root { --timestamp: 1234567890123 }"
+                },
+                "example": ":root { --timestamp: 1234567890123 }"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/time/events": {
+      "get": {
+        "summary": "Stream Timestamps via Server-Sent Events",
+        "description": "Periodically sends the current UNIX timestamp via Server-Sent Events (SSE). Sends an initial timestamp immediately after connection, then sends updates at the specified interval.",
+        "operationId": "getTimestampEvents",
+        "tags": [
+          "Timestamp",
+          "Streaming"
+        ],
+        "parameters": [
+          {
+            "name": "interval",
+            "in": "query",
+            "description": "Specifies the transmission frequency in milliseconds. Valid values: 50, 100, 200, 250, 500, 1000, 2000, 5000. Defaults to 500 if omitted.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                50,
+                100,
+                200,
+                250,
+                500,
+                1000,
+                2000,
+                5000
+              ],
+              "default": 500
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server-Sent Events stream of timestamps",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string",
+                  "description": "SSE event stream with event: time and data: <timestamp>",
+                  "example": "event: time\ndata: 1234567890123\n\nevent: time\ndata: 1234567890500\n\n"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/time/socket": {
+      "get": {
+        "summary": "Stream Timestamps via WebSocket",
+        "description": "Periodically sends the current UNIX timestamp via WebSocket. After connection, sends an initial 'connected' message, then periodic time updates. Supports ping/pong for connection health checks.",
+        "operationId": "getTimestampWebSocket",
+        "tags": [
+          "Timestamp",
+          "Streaming",
+          "WebSocket"
+        ],
+        "parameters": [
+          {
+            "name": "interval",
+            "in": "query",
+            "description": "Specifies the transmission frequency in milliseconds. Valid values: 50, 100, 200, 250, 500, 1000, 2000, 5000. Defaults to 500 if omitted.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                50,
+                100,
+                200,
+                250,
+                500,
+                1000,
+                2000,
+                5000
+              ],
+              "default": 500
+            }
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "WebSocket connection established. Sends initial connected message, followed by periodic time updates.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "connected"
+                          ],
+                          "description": "Initial connection message"
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "time"
+                          ],
+                          "description": "Periodic timestamp message"
+                        },
+                        "time": {
+                          "type": "integer",
+                          "format": "int64",
+                          "description": "The current UNIX timestamp in milliseconds"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "time"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "pong"
+                          ],
+                          "description": "Response to ping message"
+                        },
+                        "reply_to": {
+                          "oneOf": [
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "string"
+                            }
+                          ],
+                          "description": "The id from the ping request (omitted if no id was sent)"
+                        },
+                        "time": {
+                          "type": "integer",
+                          "format": "int64",
+                          "description": "The current UNIX timestamp in milliseconds"
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "time"
+                      ]
+                    }
+                  ]
+                },
+                "examples": {
+                  "connected": {
+                    "value": {
+                      "type": "connected"
+                    }
+                  },
+                  "time": {
+                    "value": {
+                      "type": "time",
+                      "time": 1234567890123
+                    }
+                  },
+                  "pong": {
+                    "value": {
+                      "type": "pong",
+                      "reply_to": 123,
+                      "time": 1234567890123
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-websocket-messages": {
+          "send": {
+            "ping": {
+              "description": "Send a ping message to receive a pong response",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "ping"
+                    ],
+                    "description": "Message type"
+                  },
+                  "id": {
+                    "oneOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ],
+                    "description": "Optional identifier that will be returned in the pong reply_to field"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              },
+              "example": {
+                "type": "ping",
+                "id": 123
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Timestamp",
+      "description": "Operations for retrieving current UNIX timestamps"
+    },
+    {
+      "name": "Streaming",
+      "description": "Real-time streaming operations for continuous timestamp updates"
+    },
+    {
+      "name": "WebSocket",
+      "description": "WebSocket-based operations"
+    }
+  ],
+  "externalDocs": {
+    "description": "Full API Documentation",
+    "url": "https://zenn.dev/siyukatu/articles/public-time-api?locale=en"
+  }
+}

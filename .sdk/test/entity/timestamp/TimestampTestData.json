@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "timestamp": {
+      "TIMESTAMP00": {
+        "id": "TIMESTAMP00"
+      },
+      "TIMESTAMP01": {
+        "id": "TIMESTAMP01"
+      },
+      "TIMESTAMP02": {
+        "id": "TIMESTAMP02"
+      }
+    }
+  },
+  "new": {
+    "timestamp": {
+      "timestamp_ref01": {}
+    }
+  }
+}

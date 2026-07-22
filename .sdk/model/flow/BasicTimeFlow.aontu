@@ -1,0 +1,28 @@
+# BasicTimeFlow
+
+main: kit: flow: BasicTimeFlow:
+{
+  entity: "time",
+  kind: "basic",
+  name: "BasicTimeFlow",
+  step: [
+    {
+      input: {
+        ref: "time_ref01",
+        srcdatavar: "time_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-time_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTimeFlow"
+}

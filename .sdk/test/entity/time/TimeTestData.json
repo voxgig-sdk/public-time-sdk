@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "time": {
+      "TIME00": {
+        "time": "sa",
+        "id": "TIME00"
+      },
+      "TIME01": {
+        "time": "s14",
+        "id": "TIME01"
+      },
+      "TIME02": {
+        "time": "s1e",
+        "id": "TIME02"
+      }
+    }
+  },
+  "new": {
+    "time": {
+      "time_ref01": {
+        "time": "s28"
+      }
+    }
+  }
+}

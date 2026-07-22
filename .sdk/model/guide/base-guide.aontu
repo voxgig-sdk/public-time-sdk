@@ -1,0 +1,29 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 5
+  metrics: count: method: 5
+
+  entity: time: {
+    path: "/time.json": {
+      op: load: method: *GET
+    }
+    path: "/time.txt": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: timestamp: {
+    path: "/time.css": {
+      op: load: method: *GET
+    }
+    path: "/time/events": {
+      op: load: method: *GET
+    }
+    path: "/time/socket": {
+      op: load: method: *GET
+    }
+  }
+
+}

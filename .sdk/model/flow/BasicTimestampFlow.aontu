@@ -1,0 +1,28 @@
+# BasicTimestampFlow
+
+main: kit: flow: BasicTimestampFlow:
+{
+  entity: "timestamp",
+  kind: "basic",
+  name: "BasicTimestampFlow",
+  step: [
+    {
+      input: {
+        ref: "timestamp_ref01",
+        srcdatavar: "timestamp_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-timestamp_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTimestampFlow"
+}

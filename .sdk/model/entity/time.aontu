@@ -1,0 +1,48 @@
+# Entity: time
+
+main: kit: entity: time: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "time"
+      req: true
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "time"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/time.json"
+          parts: [
+            "time.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/time.txt"
+          parts: [
+            "time.txt"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

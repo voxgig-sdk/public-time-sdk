@@ -1,0 +1,26 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        name: "API Support"
+        url: "https://zenn.dev/siyukatu/articles/public-time-api?locale=en"
+      }
+      description: "This API provides the current timestamp in various formats, including text, JSON, and CSS custom properties. It supports different endpoints for specific use cases, such as returning UNIX timestamps or sending periodic updates via Server-Sent Events and WebSockets."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://public-api.siyukatu.com"
+        }
+      ]
+      summary: "This API provides the current timestamp in various formats, including text, JSON, and CSS custom properties."
+      title: "Public Time API"
+      version: "1.0.0"
+      website: "https://zenn.dev/siyukatu/articles/public-time-api?locale=en"
+    }
+  }
+}
+
