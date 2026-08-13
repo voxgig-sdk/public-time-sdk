@@ -60,11 +60,11 @@ function timestamp_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["PUBLICTIME_TEST_TIMESTAMP_ENTID"] = {},
-    ["PUBLICTIME_TEST_LIVE"] = "FALSE",
+    ["PUBLIC_TIME_TEST_TIMESTAMP_ENTID"] = {},
+    ["PUBLIC_TIME_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["PUBLICTIME_TEST_LIVE"] == "TRUE"
+  local live = env["PUBLIC_TIME_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import PublicTimeSDK
-from core.error import PublicTimeError
-from core.result import PublicTimeResult
-from core.response import PublicTimeResponse
-from core.spec import PublicTimeSpec
-from feature.base_feature import PublicTimeBaseFeature
+from projectname_sdk.core.error import PublicTimeError
+from projectname_sdk.core.result import PublicTimeResult
+from projectname_sdk.core.response import PublicTimeResponse
+from projectname_sdk.core.spec import PublicTimeSpec
+from projectname_sdk.feature.base_feature import PublicTimeBaseFeature
 
 
 def _client():

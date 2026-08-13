@@ -26,7 +26,7 @@ class TimeEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set PUBLICTIME_TEST_TIME_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set PUBLIC_TIME_TEST_TIME_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,22 +74,22 @@ def time_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["PUBLICTIME_TEST_TIME_ENTID"]
+  entid_env_raw = ENV["PUBLIC_TIME_TEST_TIME_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "PUBLICTIME_TEST_TIME_ENTID" => idmap,
-    "PUBLICTIME_TEST_LIVE" => "FALSE",
-    "PUBLICTIME_TEST_EXPLAIN" => "FALSE",
+    "PUBLIC_TIME_TEST_TIME_ENTID" => idmap,
+    "PUBLIC_TIME_TEST_LIVE" => "FALSE",
+    "PUBLIC_TIME_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["PUBLICTIME_TEST_TIME_ENTID"])
+    env["PUBLIC_TIME_TEST_TIME_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["PUBLICTIME_TEST_LIVE"] == "TRUE"
+  if env["PUBLIC_TIME_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -98,13 +98,13 @@ def time_basic_setup(extra)
     client = PublicTimeSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["PUBLICTIME_TEST_LIVE"] == "TRUE"
+  live = env["PUBLIC_TIME_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["PUBLICTIME_TEST_EXPLAIN"] == "TRUE",
+    explain: env["PUBLIC_TIME_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

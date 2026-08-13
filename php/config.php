@@ -48,6 +48,7 @@ class PublicTimeConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/time.json',
                   'parts' => [
@@ -63,6 +64,7 @@ class PublicTimeConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/time.txt',
                   'parts' => [
@@ -106,6 +108,7 @@ class PublicTimeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/time/events',
                   'parts' => [
@@ -138,6 +141,7 @@ class PublicTimeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/time/socket',
                   'parts' => [
@@ -158,6 +162,7 @@ class PublicTimeConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/time.css',
                   'parts' => [

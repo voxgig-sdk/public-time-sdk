@@ -23,8 +23,8 @@ module PublicTimeTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("PUBLICTIME_TEST_LIVE")
-    override = getenv("PUBLICTIME_TEST_OVERRIDE")
+    live = getenv("PUBLIC_TIME_TEST_LIVE")
+    override = getenv("PUBLIC_TIME_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module PublicTimeTestRunner
       end
     end
 
-    explain = getenv("PUBLICTIME_TEST_EXPLAIN")
-    m["PUBLICTIME_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("PUBLIC_TIME_TEST_EXPLAIN")
+    m["PUBLIC_TIME_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

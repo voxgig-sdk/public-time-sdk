@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# PublicTime SDK exists test
 
 import pytest
 from publictime_sdk import PublicTimeSDK

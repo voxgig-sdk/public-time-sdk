@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from publictime_sdk.utility.voxgig_struct import voxgig_struct as vs
 from publictime_sdk import PublicTimeSDK
-from core import helpers
+from publictime_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _time_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "PUBLICTIME_TEST_TIME_ENTID": {},
-        "PUBLICTIME_TEST_LIVE": "FALSE",
+        "PUBLIC_TIME_TEST_TIME_ENTID": {},
+        "PUBLIC_TIME_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("PUBLICTIME_TEST_LIVE") == "TRUE"
+    live = env.get("PUBLIC_TIME_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

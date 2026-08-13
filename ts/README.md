@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = PublicTimeSDK.test()
 
 const time = await client.Time().load()
-// time is a bare entity populated with mock response data
+// time is the entity, populated with mock response data
+// — call time.data() for the record itself
 console.log(time)
 ```
 

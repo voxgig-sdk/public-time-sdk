@@ -43,6 +43,7 @@ module PublicTimeConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time.json",
                   "parts" => [
@@ -58,6 +59,7 @@ module PublicTimeConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time.txt",
                   "parts" => [
@@ -101,6 +103,7 @@ module PublicTimeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time/events",
                   "parts" => [
@@ -133,6 +136,7 @@ module PublicTimeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time/socket",
                   "parts" => [
@@ -153,6 +157,7 @@ module PublicTimeConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time.css",
                   "parts" => [

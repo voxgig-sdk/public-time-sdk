@@ -35,7 +35,7 @@ $client = new PublicTimeSDK();
 
 ```php
 try {
-    // load() returns the bare Time record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Time record (throws on error).
     $time = $client->Time()->load();
     print_r($time);
 } catch (\Throwable $err) {
@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = PublicTimeSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $time = $client->Time()->load();
 print_r($time);
 ```
@@ -223,7 +224,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -284,7 +285,7 @@ Create an instance: `$time = $client->Time();`
 #### Example: Load
 
 ```php
-// load() returns the bare Time record (throws on error).
+// load() returns the ENTITY — call data_get() for the Time record (throws on error).
 $time = $client->Time()->load();
 ```
 
@@ -302,7 +303,7 @@ Create an instance: `$timestamp = $client->Timestamp();`
 #### Example: Load
 
 ```php
-// load() returns the bare Timestamp record (throws on error).
+// load() returns the ENTITY — call data_get() for the Timestamp record (throws on error).
 $timestamp = $client->Timestamp()->load();
 ```
 

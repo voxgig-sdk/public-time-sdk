@@ -34,7 +34,7 @@ client = PublicTimeSDK.new
 
 ```ruby
 begin
-  # load returns the bare Time record (raises on error).
+  # load returns the ENTITY — call data_get for the Time record (raises on error).
   time = client.Time.load()
   puts time
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = PublicTimeSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 time = client.Time.load()
 puts time
 ```
@@ -274,7 +275,7 @@ Create an instance: `time = client.Time`
 #### Example: Load
 
 ```ruby
-# load returns the bare Time record (raises on error).
+# load returns the ENTITY — call data_get for the Time record (raises on error).
 time = client.Time.load()
 ```
 
@@ -292,7 +293,7 @@ Create an instance: `timestamp = client.Timestamp`
 #### Example: Load
 
 ```ruby
-# load returns the bare Timestamp record (raises on error).
+# load returns the ENTITY — call data_get for the Timestamp record (raises on error).
 timestamp = client.Timestamp.load()
 ```
 

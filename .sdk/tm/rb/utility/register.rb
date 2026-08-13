@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ PublicTimeUtility.registrar = ->(u) {
   u.prepare_params = PublicTimeUtilities::PrepareParams
   u.prepare_path = PublicTimeUtilities::PreparePath
   u.prepare_query = PublicTimeUtilities::PrepareQuery
+  u.graphql_body = PublicTimeUtilities::GraphqlBody
+  u.graphql_errors = PublicTimeUtilities::GraphqlErrors
   u.result_basic = PublicTimeUtilities::ResultBasic
   u.result_body = PublicTimeUtilities::ResultBody
   u.result_headers = PublicTimeUtilities::ResultHeaders

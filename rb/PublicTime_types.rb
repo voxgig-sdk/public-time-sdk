@@ -12,7 +12,7 @@
 #
 # @!attribute [rw] time
 #   @return [Integer]
-Time = Struct.new(
+TimeType = Struct.new(
   :time,
   keyword_init: true
 )

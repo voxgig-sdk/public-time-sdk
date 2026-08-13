@@ -43,8 +43,8 @@ class PublicTimeTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('PUBLICTIME_TEST_LIVE');
-        $override = self::getenv('PUBLICTIME_TEST_OVERRIDE');
+        $live = self::getenv('PUBLIC_TIME_TEST_LIVE');
+        $override = self::getenv('PUBLIC_TIME_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class PublicTimeTestRunner
             }
         }
 
-        $explain = self::getenv('PUBLICTIME_TEST_EXPLAIN');
+        $explain = self::getenv('PUBLIC_TIME_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['PUBLICTIME_TEST_EXPLAIN'] = $explain;
+            $m['PUBLIC_TIME_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

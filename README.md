@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = PublicTimeSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = PublicTimeSDK.test({
+  entity: {
+    time: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const time = await client.Time().load()
-// time is a bare Time populated with mock data
+// time is the Time entity, populated with mock data
+// — call time.data() for the record itself
 console.log(time)
 ```
 
@@ -183,7 +192,7 @@ require_once 'publictime_sdk.php';
 $client = new PublicTimeSDK();
 
 
-// Load a specific time (returns the bare record; throws on error)
+// Load a specific time (returns the ENTITY; call data_get() for the record; throws on error)
 $time = $client->Time()->load();
 print_r($time);
 ```
@@ -211,7 +220,7 @@ require_relative "PublicTime_sdk"
 client = PublicTimeSDK.new
 
 
-# Load a specific time (returns the bare record; raises on error)
+# Load a specific time (returns the ENTITY; call data_get for the record)
 time = client.Time.load()
 puts time
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://zenn.dev/siyukatu/articles/public-time-api?locale=en](https://zenn.dev/siyukatu/articles/public-time-api?locale=en)
 

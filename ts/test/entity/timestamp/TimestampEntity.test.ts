@@ -26,8 +26,8 @@ import {
 describe('TimestampEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when PUBLICTIME_TEST_LIVE=TRUE.
-  afterEach(liveDelay('PUBLICTIME_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when PUBLIC_TIME_TEST_LIVE=TRUE.
+  afterEach(liveDelay('PUBLIC_TIME_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = PublicTimeSDK.test()
@@ -62,7 +62,7 @@ describe('TimestampEntity', async () => {
     // LOAD
     const timestamp_ref01_ent = client.Timestamp()
     const timestamp_ref01_match_dt0: any = {}
-    const timestamp_ref01_data_dt0 = await timestamp_ref01_ent.load(timestamp_ref01_match_dt0)
+    const timestamp_ref01_data_dt0 = (await timestamp_ref01_ent.load(timestamp_ref01_match_dt0)).data()
     assert(null != timestamp_ref01_data_dt0)
 
 
