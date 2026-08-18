@@ -28,7 +28,7 @@ class PublicTimeSDK
     utility = PublicTimeUtility.new
     @_utility = utility
 
-    config = PublicTimeConfig.make_config
+    config = PublicTimeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

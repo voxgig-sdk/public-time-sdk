@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://public-api.siyukatu.com',
+    base: "https://public-api.siyukatu.com",
 
     headers: {
       "content-type": "application/json"
@@ -58,11 +58,9 @@ class Config {
     "time": {
       "fields": [
         {
-          "active": true,
           "name": "time",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         }
       ],
       "name": "time",
@@ -72,7 +70,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -84,11 +81,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -100,11 +95,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -120,16 +113,13 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": 500,
                     "kind": "query",
                     "name": "interval",
                     "orig": "interval",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   }
                 ]
@@ -149,20 +139,16 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": 500,
                     "kind": "query",
                     "name": "interval",
                     "orig": "interval",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   }
                 ]
@@ -182,11 +168,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -198,11 +182,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

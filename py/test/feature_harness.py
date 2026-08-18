@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from publictime_sdk.config import make_config
+from publictime_sdk.config import shared_config
 from publictime_sdk.features import _make_feature
 from publictime_sdk.core.control import PublicTimeControl
 from publictime_sdk.core.error import PublicTimeError
@@ -24,7 +24,7 @@ from publictime_sdk.core.spec import PublicTimeSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

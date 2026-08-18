@@ -40,7 +40,7 @@ class PublicTimeSDK
         $utility = new PublicTimeUtility();
         $this->_utility = $utility;
 
-        $config = PublicTimeConfig::make_config();
+        $config = PublicTimeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -15,7 +15,7 @@ require_relative "../PublicTime_sdk"
 module PublicTimeFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = PublicTimeConfig.make_config["feature"]
+    f = PublicTimeConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
