@@ -97,7 +97,7 @@ time = client.Time
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `time` | `Integer` | Yes |  |
+| `time` | `Integer` | Yes | The current UNIX timestamp in milliseconds |
 
 ### Operations
 

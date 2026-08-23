@@ -94,7 +94,7 @@ local time = client:Time(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `time` | `number` | Yes |  |
+| `time` | `number` | Yes | The current UNIX timestamp in milliseconds |
 
 ### Operations
 

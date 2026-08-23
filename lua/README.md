@@ -226,7 +226,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `time` |  |
+| `time` | The current UNIX timestamp in milliseconds |
 
 Operations: Load.
 
@@ -260,7 +260,7 @@ Create an instance: `local time = client:Time(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `time` | `number` |  |
+| `time` | `number` | The current UNIX timestamp in milliseconds |
 
 #### Example: Load
 

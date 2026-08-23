@@ -6,7 +6,7 @@ The Golang SDK for the PublicTime API — an entity-oriented client using standa
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Time(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -259,7 +259,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"time"` |  |
+| `"time"` | The current UNIX timestamp in milliseconds |
 
 Operations: Load.
 
@@ -293,7 +293,7 @@ Create an instance: `time := client.Time(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `time` | `int` |  |
+| `time` | `int` | The current UNIX timestamp in milliseconds |
 
 #### Example: Load
 

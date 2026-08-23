@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "PublicTime",
+      slug = "public-time",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -31,6 +34,7 @@ local function make_config()
           {
             ["name"] = "time",
             ["req"] = true,
+            ["short"] = "The current UNIX timestamp in milliseconds",
             ["type"] = "`$INTEGER`",
           },
         },

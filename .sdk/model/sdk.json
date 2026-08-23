@@ -36,6 +36,7 @@
               "active": true,
               "name": "time",
               "req": true,
+              "short": "The current UNIX timestamp in milliseconds",
               "type": "`$INTEGER`"
             }
           ],

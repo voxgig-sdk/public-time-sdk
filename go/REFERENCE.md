@@ -102,7 +102,7 @@ fmt.Println(time.GetName()) // "time"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `time` | `int` | Yes |  |
+| `time` | `int` | Yes | The current UNIX timestamp in milliseconds |
 
 ### Operations
 

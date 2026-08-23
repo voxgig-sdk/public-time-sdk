@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "PublicTime",
+            "slug": "public-time",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -52,6 +55,7 @@ def make_config():
           {
             "name": "time",
             "req": True,
+            "short": "The current UNIX timestamp in milliseconds",
             "type": "`$INTEGER`",
           },
         ],

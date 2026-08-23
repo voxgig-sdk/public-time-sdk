@@ -8,6 +8,7 @@ main: kit: entity: time: {
     {
       name: "time"
       req: true
+      short: "The current UNIX timestamp in milliseconds"
       type: "`$INTEGER`"
     }
   ]

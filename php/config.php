@@ -33,6 +33,9 @@ class PublicTimeConfig
         return [
             "main" => [
                 "name" => "PublicTime",
+                "slug" => "public-time",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -57,6 +60,7 @@ class PublicTimeConfig
             [
               'name' => 'time',
               'req' => true,
+              'short' => 'The current UNIX timestamp in milliseconds',
               'type' => '`$INTEGER`',
             ],
           ],

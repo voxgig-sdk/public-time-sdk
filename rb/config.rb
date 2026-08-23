@@ -19,6 +19,9 @@ module PublicTimeConfig
     {
       "main" => {
         "name" => "PublicTime",
+        "slug" => "public-time",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -43,6 +46,7 @@ module PublicTimeConfig
             {
               "name" => "time",
               "req" => true,
+              "short" => "The current UNIX timestamp in milliseconds",
               "type" => "`$INTEGER`",
             },
           ],

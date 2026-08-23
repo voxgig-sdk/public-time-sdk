@@ -242,7 +242,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `time` |  |
+| `time` | The current UNIX timestamp in milliseconds |
 
 Operations: Load.
 
@@ -276,7 +276,7 @@ Create an instance: `time = client.Time()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `time` | `int` |  |
+| `time` | `int` | The current UNIX timestamp in milliseconds |
 
 #### Example: Load
 
