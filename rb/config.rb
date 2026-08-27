@@ -28,6 +28,7 @@ module PublicTimeConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
