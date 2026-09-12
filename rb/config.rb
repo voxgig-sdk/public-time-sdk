@@ -45,6 +45,7 @@ module PublicTimeConfig
         "time" => {
           "fields" => [
             {
+              "format" => "int64",
               "name" => "time",
               "req" => true,
               "short" => "The current UNIX timestamp in milliseconds",
@@ -62,28 +63,38 @@ module PublicTimeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time.json",
-                  "parts" => [
-                    "time.json",
+                  "segments" => [
+                    {
+                      "lit" => "time.json",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "time.json",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time.txt",
-                  "parts" => [
-                    "time.txt",
+                  "segments" => [
+                    {
+                      "lit" => "time.txt",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "time.txt",
+                  ],
                 },
               ],
             },
@@ -115,9 +126,13 @@ module PublicTimeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time/events",
-                  "parts" => [
-                    "time",
-                    "events",
+                  "segments" => [
+                    {
+                      "lit" => "time",
+                    },
+                    {
+                      "lit" => "events",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -128,6 +143,10 @@ module PublicTimeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "time",
+                    "events",
+                  ],
                 },
                 {
                   "args" => {
@@ -144,9 +163,13 @@ module PublicTimeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time/socket",
-                  "parts" => [
-                    "time",
-                    "socket",
+                  "segments" => [
+                    {
+                      "lit" => "time",
+                    },
+                    {
+                      "lit" => "socket",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -157,20 +180,29 @@ module PublicTimeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "time",
+                    "socket",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/time.css",
-                  "parts" => [
-                    "time.css",
+                  "segments" => [
+                    {
+                      "lit" => "time.css",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "time.css",
+                  ],
                 },
               ],
             },

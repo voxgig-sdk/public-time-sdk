@@ -24,9 +24,13 @@ main: kit: entity: timestamp: {
           }
           method: "GET"
           orig: "/time/events"
-          parts: [
-            "time"
-            "events"
+          segments: [
+            {
+              lit: "time"
+            }
+            {
+              lit: "events"
+            }
           ]
           select: {
             exist: [
@@ -53,9 +57,13 @@ main: kit: entity: timestamp: {
           }
           method: "GET"
           orig: "/time/socket"
-          parts: [
-            "time"
-            "socket"
+          segments: [
+            {
+              lit: "time"
+            }
+            {
+              lit: "socket"
+            }
           ]
           select: {
             exist: [
@@ -70,8 +78,10 @@ main: kit: entity: timestamp: {
         {
           method: "GET"
           orig: "/time.css"
-          parts: [
-            "time.css"
+          segments: [
+            {
+              lit: "time.css"
+            }
           ]
           transform: {
             req: "`reqdata`"

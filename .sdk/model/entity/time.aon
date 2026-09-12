@@ -6,6 +6,7 @@ main: kit: entity: time: {
 
   fields: [
     {
+      format: "int64"
       name: "time"
       req: true
       short: "The current UNIX timestamp in milliseconds"
@@ -21,8 +22,10 @@ main: kit: entity: time: {
         {
           method: "GET"
           orig: "/time.json"
-          parts: [
-            "time.json"
+          segments: [
+            {
+              lit: "time.json"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -32,8 +35,10 @@ main: kit: entity: time: {
         {
           method: "GET"
           orig: "/time.txt"
-          parts: [
-            "time.txt"
+          segments: [
+            {
+              lit: "time.txt"
+            }
           ]
           transform: {
             req: "`reqdata`"

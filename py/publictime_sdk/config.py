@@ -1,6 +1,14 @@
 # PublicTime SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -54,6 +62,7 @@ def make_config():
       "time": {
         "fields": [
           {
+            "format": "int64",
             "name": "time",
             "req": True,
             "short": "The current UNIX timestamp in milliseconds",
@@ -71,28 +80,38 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/time.json",
-                "parts": [
-                  "time.json",
+                "segments": [
+                  {
+                    "lit": "time.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "time.json",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/time.txt",
-                "parts": [
-                  "time.txt",
+                "segments": [
+                  {
+                    "lit": "time.txt",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "time.txt",
+                ],
               },
             ],
           },
@@ -124,9 +143,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/time/events",
-                "parts": [
-                  "time",
-                  "events",
+                "segments": [
+                  {
+                    "lit": "time",
+                  },
+                  {
+                    "lit": "events",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -137,6 +160,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "time",
+                  "events",
+                ],
               },
               {
                 "args": {
@@ -153,9 +180,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/time/socket",
-                "parts": [
-                  "time",
-                  "socket",
+                "segments": [
+                  {
+                    "lit": "time",
+                  },
+                  {
+                    "lit": "socket",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -166,20 +197,29 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "time",
+                  "socket",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/time.css",
-                "parts": [
-                  "time.css",
+                "segments": [
+                  {
+                    "lit": "time.css",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "time.css",
+                ],
               },
             ],
           },

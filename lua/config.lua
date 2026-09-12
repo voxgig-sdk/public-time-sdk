@@ -33,6 +33,7 @@ local function make_config()
       ["time"] = {
         ["fields"] = {
           {
+            ["format"] = "int64",
             ["name"] = "time",
             ["req"] = true,
             ["short"] = "The current UNIX timestamp in milliseconds",
@@ -50,13 +51,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time.json",
-                ["parts"] = {
-                  "time.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "time.json",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "time.json",
                 },
               },
               {
@@ -64,13 +70,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time.txt",
-                ["parts"] = {
-                  "time.txt",
+                ["segments"] = {
+                  {
+                    ["lit"] = "time.txt",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "time.txt",
                 },
               },
             },
@@ -103,9 +114,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time/events",
-                ["parts"] = {
-                  "time",
-                  "events",
+                ["segments"] = {
+                  {
+                    ["lit"] = "time",
+                  },
+                  {
+                    ["lit"] = "events",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -115,6 +130,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "time",
+                  "events",
                 },
               },
               {
@@ -132,9 +151,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time/socket",
-                ["parts"] = {
-                  "time",
-                  "socket",
+                ["segments"] = {
+                  {
+                    ["lit"] = "time",
+                  },
+                  {
+                    ["lit"] = "socket",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -145,19 +168,28 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "time",
+                  "socket",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time.css",
-                ["parts"] = {
-                  "time.css",
+                ["segments"] = {
+                  {
+                    ["lit"] = "time.css",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "time.css",
                 },
               },
             },
