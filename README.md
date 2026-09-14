@@ -105,7 +105,7 @@ local result, err = client:Time():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
+| TypeScript | `@voxgig-sdk/public-time-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
 | Python | `voxgig-sdk-public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
 | PHP | `voxgig-sdk/public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/public-time-sdk/go` | `go get github.com/voxgig-sdk/public-time-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Time():load()
 ### TypeScript
 
 ```ts
-import { PublicTimeSDK } from '@voxgig-sdk/public-time'
+import { PublicTimeSDK } from '@voxgig-sdk/public-time-sdk'
 
 const client = new PublicTimeSDK()
 

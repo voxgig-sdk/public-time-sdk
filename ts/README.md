@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PublicTimeSDK } from '@voxgig-sdk/public-time'
+import { PublicTimeSDK } from '@voxgig-sdk/public-time-sdk'
 
 const client = new PublicTimeSDK()
 ```
@@ -428,7 +428,7 @@ public-time/
 Import the SDK from the package root:
 
 ```ts
-import { PublicTimeSDK } from '@voxgig-sdk/public-time'
+import { PublicTimeSDK } from '@voxgig-sdk/public-time-sdk'
 ```
 
 ### Entity state
