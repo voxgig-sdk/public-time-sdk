@@ -20,6 +20,12 @@ main: kit: entity: time: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /time.json"
+            json: "{\"operationId\":\"getTimestampJson\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"time\":1234567890123},\"schema\":{\"properties\":{\"time\":{\"description\":\"The current UNIX timestamp in milliseconds\",\"example\":1234567890123,\"format\":\"int64\",\"type\":\"integer\"}},\"required\":[\"time\"],\"type\":\"object\"}}},\"description\":\"Successfully returned current UNIX timestamp in JSON format\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/time.json"
           segments: [
@@ -33,6 +39,12 @@ main: kit: entity: time: {
           }
         }
         {
+          contract: {
+            id: "GET /time.txt"
+            json: "{\"operationId\":\"getTimestampText\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/vnd.sykt-api\":{\"example\":\"1234567890123\",\"schema\":{\"example\":\"1234567890123\",\"type\":\"string\"}}},\"description\":\"Successfully returned current UNIX timestamp in text format\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/time.txt"
           segments: [

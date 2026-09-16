@@ -1,12 +1,18 @@
 # PublicTime SDK feature factory
 
 from publictime_sdk.feature.base_feature import PublicTimeBaseFeature
+from publictime_sdk.feature.ratelimit_feature import PublicTimeRatelimitFeature
+from publictime_sdk.feature.retry_feature import PublicTimeRetryFeature
 from publictime_sdk.feature.test_feature import PublicTimeTestFeature
+from publictime_sdk.feature.timeout_feature import PublicTimeTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: PublicTimeBaseFeature(),
+    "ratelimit": lambda: PublicTimeRatelimitFeature(),
+    "retry": lambda: PublicTimeRetryFeature(),
     "test": lambda: PublicTimeTestFeature(),
+    "timeout": lambda: PublicTimeTimeoutFeature(),
 }
 
 
