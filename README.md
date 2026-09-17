@@ -105,12 +105,12 @@ local result, err = client:Time():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/public-time-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
-| Python | `voxgig-sdk-public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
-| PHP | `voxgig-sdk/public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
+| TypeScript | `@voxgig-sdk/public-time-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/tags) |
+| Python | `voxgig-sdk-public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/tags) |
+| PHP | `voxgig-sdk/public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/public-time-sdk/go` | `go get github.com/voxgig-sdk/public-time-sdk/go@latest` |
-| Ruby | `voxgig-sdk-public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
-| Lua | `voxgig-sdk-public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/releases) |
+| Ruby | `voxgig-sdk-public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/tags) |
+| Lua | `voxgig-sdk-public-time` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-time-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/public-time-sdk/go-cli` | `go install github.com/voxgig-sdk/public-time-sdk/go-cli/cmd/public-time@latest` |
 | Go MCP server | `github.com/voxgig-sdk/public-time-sdk/go-mcp` | `go get github.com/voxgig-sdk/public-time-sdk/go-mcp@latest` |
 

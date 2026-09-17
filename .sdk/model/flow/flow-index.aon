@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicTimeFlow.aon"
-@"BasicTimestampFlow.aon"
+@"./BasicTimeFlow.aon"
+@"./BasicTimestampFlow.aon"

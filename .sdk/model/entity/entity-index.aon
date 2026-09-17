@@ -1,4 +1,4 @@
 # Entity Models
 
-@"time.aon"
-@"timestamp.aon"
+@"./time.aon"
+@"./timestamp.aon"
