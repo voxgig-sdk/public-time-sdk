@@ -87,11 +87,12 @@ local function make_config()
       ["time"] = {
         ["fields"] = {
           {
-            ["format"] = "int64",
             ["name"] = "time",
+            ["title"] = "Time",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "The current UNIX timestamp in milliseconds",
-            ["type"] = "`$INTEGER`",
+            ["format"] = "int64",
           },
         },
         ["name"] = "time",
@@ -101,7 +102,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time.json",
@@ -110,17 +110,18 @@ local function make_config()
                     ["lit"] = "time.json",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "time.json",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "time.json",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time.txt",
@@ -129,14 +130,16 @@ local function make_config()
                     ["lit"] = "time.txt",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "time.txt",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "time.txt",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -154,17 +157,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = 500,
-                      ["kind"] = "query",
-                      ["name"] = "interval",
-                      ["orig"] = "interval",
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time/events",
@@ -176,32 +168,33 @@ local function make_config()
                     ["lit"] = "events",
                   },
                 },
+                ["parts"] = {
+                  "time",
+                  "events",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "interval",
+                      ["orig"] = "interval",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 500,
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "interval",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "time",
-                  "events",
-                },
               },
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = 500,
-                      ["kind"] = "query",
-                      ["name"] = "interval",
-                      ["orig"] = "interval",
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time/socket",
@@ -213,22 +206,33 @@ local function make_config()
                     ["lit"] = "socket",
                   },
                 },
+                ["parts"] = {
+                  "time",
+                  "socket",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "interval",
+                      ["orig"] = "interval",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 500,
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "interval",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "time",
-                  "socket",
-                },
               },
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/time.css",
@@ -237,14 +241,16 @@ local function make_config()
                     ["lit"] = "time.css",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "time.css",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "time.css",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },

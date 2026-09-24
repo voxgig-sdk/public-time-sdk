@@ -91,11 +91,12 @@ func MakeConfig() map[string]any {
 			"time": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "int64",
 						"name": "time",
+						"title": "Time",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "The current UNIX timestamp in milliseconds",
-						"type": "`$INTEGER`",
+						"format": "int64",
 					},
 				},
 				"name": "time",
@@ -105,7 +106,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/time.json",
@@ -114,17 +114,18 @@ func MakeConfig() map[string]any {
 										"lit": "time.json",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"time.json",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"time.json",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/time.txt",
@@ -133,14 +134,16 @@ func MakeConfig() map[string]any {
 										"lit": "time.txt",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"time.txt",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"time.txt",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -158,17 +161,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 500,
-											"kind": "query",
-											"name": "interval",
-											"orig": "interval",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/time/events",
@@ -180,32 +172,33 @@ func MakeConfig() map[string]any {
 										"lit": "events",
 									},
 								},
+								"parts": []any{
+									"time",
+									"events",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "interval",
+											"orig": "interval",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 500,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"interval",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"time",
-									"events",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 500,
-											"kind": "query",
-											"name": "interval",
-											"orig": "interval",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/time/socket",
@@ -217,22 +210,33 @@ func MakeConfig() map[string]any {
 										"lit": "socket",
 									},
 								},
+								"parts": []any{
+									"time",
+									"socket",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "interval",
+											"orig": "interval",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 500,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"interval",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"time",
-									"socket",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/time.css",
@@ -241,14 +245,16 @@ func MakeConfig() map[string]any {
 										"lit": "time.css",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"time.css",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"time.css",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

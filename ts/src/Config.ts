@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -141,11 +134,12 @@ class Config {
     "time": {
       "fields": [
         {
-          "format": "int64",
           "name": "time",
+          "title": "Time",
+          "type": "`$INTEGER`",
           "req": true,
           "short": "The current UNIX timestamp in milliseconds",
-          "type": "`$INTEGER`"
+          "format": "int64"
         }
       ],
       "name": "time",
@@ -155,7 +149,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/time.json",
@@ -164,17 +157,18 @@ class Config {
                   "lit": "time.json"
                 }
               ],
-              "select": {},
+              "parts": [
+                "time.json"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "time.json"
-              ]
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/time.txt",
@@ -183,14 +177,16 @@ class Config {
                   "lit": "time.txt"
                 }
               ],
-              "select": {},
+              "parts": [
+                "time.txt"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "time.txt"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -208,17 +204,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": 500,
-                    "kind": "query",
-                    "name": "interval",
-                    "orig": "interval",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/time/events",
@@ -230,32 +215,33 @@ class Config {
                   "lit": "events"
                 }
               ],
-              "select": {
-                "exist": [
-                  "interval"
-                ]
-              },
+              "parts": [
+                "time",
+                "events"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "time",
-                "events"
-              ]
-            },
-            {
               "args": {
                 "query": [
                   {
-                    "example": 500,
-                    "kind": "query",
                     "name": "interval",
                     "orig": "interval",
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 500
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "interval"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/time/socket",
@@ -267,22 +253,33 @@ class Config {
                   "lit": "socket"
                 }
               ],
-              "select": {
-                "exist": [
-                  "interval"
-                ]
-              },
+              "parts": [
+                "time",
+                "socket"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "time",
-                "socket"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "interval",
+                    "orig": "interval",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 500
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "interval"
+                ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/time.css",
@@ -291,14 +288,16 @@ class Config {
                   "lit": "time.css"
                 }
               ],
-              "select": {},
+              "parts": [
+                "time.css"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "time.css"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

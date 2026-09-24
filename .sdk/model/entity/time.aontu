@@ -1,0 +1,65 @@
+# Entity: time
+
+main: kit: entity: time: {
+
+  alias: field: {}
+
+  fields: {
+    time: {
+      fo: "int64"
+      h: "Time"
+      n: "time"
+      r: true
+      sh: "The current UNIX timestamp in milliseconds"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "time"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /time.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/time.json"
+          s: [
+            {
+              lit: "time.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /time.txt"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/time.txt"
+          s: [
+            {
+              lit: "time.txt"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

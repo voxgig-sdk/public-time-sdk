@@ -1,0 +1,115 @@
+# Entity: timestamp
+
+main: kit: entity: timestamp: {
+
+  alias: field: {}
+
+  name: "timestamp"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /time/events"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 500
+                k: "query"
+                n: "interval"
+                or: "interval"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/time/events"
+          q: {
+            exist: [
+              "interval"
+            ]
+          }
+          s: [
+            {
+              lit: "time"
+            }
+            {
+              lit: "events"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /time/socket"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 500
+                k: "query"
+                n: "interval"
+                or: "interval"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/time/socket"
+          q: {
+            exist: [
+              "interval"
+            ]
+          }
+          s: [
+            {
+              lit: "time"
+            }
+            {
+              lit: "socket"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /time.css"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/time.css"
+          s: [
+            {
+              lit: "time.css"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

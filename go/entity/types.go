@@ -1,7 +1,7 @@
 // Typed models for the PublicTime SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,7 +14,6 @@ import (
 
 // Time is the typed data model for the time entity.
 type Time struct {
-	Time int `json:"time"`
 }
 
 // TimeLoadMatch is the typed request payload for Time.LoadTyped.

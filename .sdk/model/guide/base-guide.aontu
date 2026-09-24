@@ -1,0 +1,32 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 5
+  metrics: count: method: 5
+
+  entity: time: {
+    path: "/time.json": {
+      op: load: method: *GET
+    }
+    path: "/time.txt": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: timestamp: {
+    path: "/time.css": {
+      op: load: method: *GET
+    }
+    path: "/time/events": {
+      op: load: method: *GET
+    }
+    path: "/time/socket": {
+      op: load: method: *GET
+    }
+  }
+
+}
