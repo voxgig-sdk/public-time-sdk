@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 PublicTimeUtility.registrar = ->(u) {
   u.clean = PublicTimeUtilities::Clean
+  u.clean_add = PublicTimeUtilities::CleanAdd
+  u.clean_explain = PublicTimeUtilities::CleanExplain
   u.done = PublicTimeUtilities::Done
   u.make_error = PublicTimeUtilities::MakeError
   u.feature_add = PublicTimeUtilities::FeatureAdd

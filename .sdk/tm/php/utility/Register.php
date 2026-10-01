@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 PublicTimeUtility::setRegistrar(function (PublicTimeUtility $u): void {
     $u->clean = [PublicTimeClean::class, 'call'];
+    $u->clean_add = [PublicTimeClean::class, 'add'];
+    $u->clean_explain = [PublicTimeDone::class, 'clean_explain'];
     $u->done = [PublicTimeDone::class, 'call'];
     $u->make_error = [PublicTimeMakeError::class, 'call'];
     $u->feature_add = [PublicTimeFeatureAdd::class, 'call'];
