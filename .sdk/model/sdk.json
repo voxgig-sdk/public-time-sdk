@@ -126,6 +126,10 @@
                   "o": "/time.json",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "time.json"
@@ -149,6 +153,10 @@
                   "o": "/time.txt",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "raw",
+                    "media": "text/vnd.sykt-api"
+                  },
                   "s": [
                     {
                       "lit": "time.txt"
@@ -181,6 +189,33 @@
                 {
                   "a": true,
                   "co": {
+                    "id": "GET /time.css",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/time.css",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "raw",
+                    "media": "text/css"
+                  },
+                  "s": [
+                    {
+                      "lit": "time.css"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
                     "id": "GET /time/events",
                     "source": "openapi3",
                     "version": 2
@@ -201,12 +236,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/time/events",
-                  "q": {
-                    "exist": [
-                      "interval"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "raw",
+                    "media": "text/event-stream"
+                  },
                   "s": [
                     {
                       "lit": "time"
@@ -243,11 +278,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/time/socket",
-                  "q": {
-                    "exist": [
-                      "interval"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -255,29 +286,6 @@
                     },
                     {
                       "lit": "socket"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /time.css",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/time.css",
-                  "q": {},
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "time.css"
                     }
                   ],
                   "t": {
@@ -615,6 +623,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -788,7 +797,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -841,6 +850,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1071,7 +1085,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1448,6 +1465,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

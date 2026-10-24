@@ -28,6 +28,10 @@ main: kit: entity: time: {
           }
           m: "GET"
           o: "/time.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "time.json"
@@ -46,6 +50,10 @@ main: kit: entity: time: {
           }
           m: "GET"
           o: "/time.txt"
+          rs: {
+            kind: "raw"
+            media: "text/vnd.sykt-api"
+          }
           s: [
             {
               lit: "time.txt"

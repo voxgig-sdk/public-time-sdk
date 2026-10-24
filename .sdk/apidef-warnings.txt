@@ -1,0 +1,25 @@
+{
+  point: "warning"
+  note: "Points GET /time.json and GET /time.txt on entity=time op=load have the same selector (exist: none), so only GET /time.json is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "time"
+  op: "load"
+  points: [
+    "GET /time.json"
+    "GET /time.txt"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /time.css, GET /time/events and GET /time/socket on entity=timestamp op=load have the same selector (exist: none), so only GET /time.css is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "timestamp"
+  op: "load"
+  points: [
+    "GET /time.css"
+    "GET /time/events"
+    "GET /time/socket"
+  ]
+
+}

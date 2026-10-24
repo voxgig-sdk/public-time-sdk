@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -139,7 +140,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         },
                         {
                             "kind": "http",
@@ -159,7 +164,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "raw",
+                                "media": "text/vnd.sykt-api"
+                            }
                         }
                     ]
                 }
@@ -176,6 +185,30 @@ class Config {
                     "input": "data",
                     "name": "load",
                     "points": [
+                        {
+                            "kind": "http",
+                            "method": "GET",
+                            "orig": "/time.css",
+                            "segments": [
+                                {
+                                    "lit": "time.css"
+                                }
+                            ],
+                            "parts": [
+                                "time.css"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {},
+                            "select": {},
+                            "response": {
+                                "kind": "raw",
+                                "media": "text/css"
+                            }
+                        },
                         {
                             "kind": "http",
                             "method": "GET",
@@ -208,10 +241,10 @@ class Config {
                                     }
                                 ]
                             },
-                            "select": {
-                                "exist": [
-                                    "interval"
-                                ]
+                            "select": {},
+                            "response": {
+                                "kind": "raw",
+                                "media": "text/event-stream"
                             }
                         },
                         {
@@ -246,30 +279,6 @@ class Config {
                                     }
                                 ]
                             },
-                            "select": {
-                                "exist": [
-                                    "interval"
-                                ]
-                            }
-                        },
-                        {
-                            "kind": "http",
-                            "method": "GET",
-                            "orig": "/time.css",
-                            "segments": [
-                                {
-                                    "lit": "time.css"
-                                }
-                            ],
-                            "parts": [
-                                "time.css"
-                            ],
-                            "rename": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "args": {},
                             "select": {}
                         }
                     ]

@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -124,6 +125,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 							map[string]any{
 								"kind": "http",
@@ -144,6 +149,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "raw",
+									"media": "text/vnd.sykt-api",
+								},
 							},
 						},
 					},
@@ -160,6 +169,30 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "load",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/time.css",
+								"segments": []any{
+									map[string]any{
+										"lit": "time.css",
+									},
+								},
+								"parts": []any{
+									"time.css",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "raw",
+									"media": "text/css",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -192,10 +225,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"interval",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "raw",
+									"media": "text/event-stream",
 								},
 							},
 							map[string]any{
@@ -230,30 +263,6 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"interval",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/time.css",
-								"segments": []any{
-									map[string]any{
-										"lit": "time.css",
-									},
-								},
-								"parts": []any{
-									"time.css",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{},
 								"select": map[string]any{},
 							},
 						},

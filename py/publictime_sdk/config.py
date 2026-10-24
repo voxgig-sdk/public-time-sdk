@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -149,6 +150,10 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
+                },
               },
               {
                 "kind": "http",
@@ -169,6 +174,10 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "response": {
+                  "kind": "raw",
+                  "media": "text/vnd.sykt-api",
+                },
               },
             ],
           },
@@ -185,6 +194,30 @@ def make_config():
             "input": "data",
             "name": "load",
             "points": [
+              {
+                "kind": "http",
+                "method": "GET",
+                "orig": "/time.css",
+                "segments": [
+                  {
+                    "lit": "time.css",
+                  },
+                ],
+                "parts": [
+                  "time.css",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
+                "response": {
+                  "kind": "raw",
+                  "media": "text/css",
+                },
+              },
               {
                 "kind": "http",
                 "method": "GET",
@@ -217,10 +250,10 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "interval",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "raw",
+                  "media": "text/event-stream",
                 },
               },
               {
@@ -255,30 +288,6 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "interval",
-                  ],
-                },
-              },
-              {
-                "kind": "http",
-                "method": "GET",
-                "orig": "/time.css",
-                "segments": [
-                  {
-                    "lit": "time.css",
-                  },
-                ],
-                "parts": [
-                  "time.css",
-                ],
-                "rename": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "args": {},
                 "select": {},
               },
             ],

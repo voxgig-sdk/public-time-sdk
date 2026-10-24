@@ -79,6 +79,7 @@ module PublicTimeConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -132,6 +133,10 @@ module PublicTimeConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
                 },
                 {
                   "kind" => "http",
@@ -152,6 +157,10 @@ module PublicTimeConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "raw",
+                    "media" => "text/vnd.sykt-api",
+                  },
                 },
               ],
             },
@@ -168,6 +177,30 @@ module PublicTimeConfig
               "input" => "data",
               "name" => "load",
               "points" => [
+                {
+                  "kind" => "http",
+                  "method" => "GET",
+                  "orig" => "/time.css",
+                  "segments" => [
+                    {
+                      "lit" => "time.css",
+                    },
+                  ],
+                  "parts" => [
+                    "time.css",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
+                  "response" => {
+                    "kind" => "raw",
+                    "media" => "text/css",
+                  },
+                },
                 {
                   "kind" => "http",
                   "method" => "GET",
@@ -200,10 +233,10 @@ module PublicTimeConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "interval",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "raw",
+                    "media" => "text/event-stream",
                   },
                 },
                 {
@@ -238,30 +271,6 @@ module PublicTimeConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "interval",
-                    ],
-                  },
-                },
-                {
-                  "kind" => "http",
-                  "method" => "GET",
-                  "orig" => "/time.css",
-                  "segments" => [
-                    {
-                      "lit" => "time.css",
-                    },
-                  ],
-                  "parts" => [
-                    "time.css",
-                  ],
-                  "rename" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "args" => {},
                   "select" => {},
                 },
               ],

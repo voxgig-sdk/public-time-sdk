@@ -24,7 +24,7 @@ Key fields to recognise:
 
 ### Timestamp
 
-Results: Server-Sent Events stream of timestamps; Successfully returned current timestamp as CSS custom property.
+Results: Successfully returned current timestamp as CSS custom property; Server-Sent Events stream of timestamps.
 
 SDK operations: `load`.
 
@@ -36,9 +36,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | --- | --- | --- | --- |
 | Time | `load` | `GET /time.json` | See reference |
 | Time | `load` | `GET /time.txt` | See reference |
+| Timestamp | `load` | `GET /time.css` | See reference |
 | Timestamp | `load` | `GET /time/events` | See reference |
 | Timestamp | `load` | `GET /time/socket` | See reference |
-| Timestamp | `load` | `GET /time.css` | See reference |
 
 ## Connect to the API
 

@@ -11,6 +11,28 @@ main: kit: entity: timestamp: {
       points: [
         {
           co: {
+            id: "GET /time.css"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/time.css"
+          rs: {
+            kind: "raw"
+            media: "text/css"
+          }
+          s: [
+            {
+              lit: "time.css"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /time/events"
             source: "openapi3"
             version: 2
@@ -29,10 +51,9 @@ main: kit: entity: timestamp: {
           }
           m: "GET"
           o: "/time/events"
-          q: {
-            exist: [
-              "interval"
-            ]
+          rs: {
+            kind: "raw"
+            media: "text/event-stream"
           }
           s: [
             {
@@ -67,35 +88,12 @@ main: kit: entity: timestamp: {
           }
           m: "GET"
           o: "/time/socket"
-          q: {
-            exist: [
-              "interval"
-            ]
-          }
           s: [
             {
               lit: "time"
             }
             {
               lit: "socket"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /time.css"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/time.css"
-          s: [
-            {
-              lit: "time.css"
             }
           ]
           t: {

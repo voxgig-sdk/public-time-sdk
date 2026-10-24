@@ -12,6 +12,8 @@ type PublicTimeError struct {
 	Ctx    *Context `json:"-"`
 	Result any
 	Spec   any
+	// The HTTP status, -1 when there was no response.
+	Status int
 }
 
 func NewPublicTimeError(code string, msg string, ctx *Context) *PublicTimeError {
@@ -21,7 +23,12 @@ func NewPublicTimeError(code string, msg string, ctx *Context) *PublicTimeError 
 		Code:               code,
 		Msg:                msg,
 		Ctx:                ctx,
+		Status:             -1,
 	}
+}
+
+func (e *PublicTimeError) NotFound() bool {
+	return 404 == e.Status
 }
 
 func (e *PublicTimeError) Error() string {
@@ -35,6 +42,7 @@ func (e *PublicTimeError) Record() map[string]any {
 		"sdk":     e.Sdk,
 		"code":    e.Code,
 		"message": e.Msg,
+		"status":  e.Status,
 		"result":  e.Result,
 		"spec":    e.Spec,
 	}

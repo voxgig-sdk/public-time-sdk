@@ -18,17 +18,17 @@
     }
   },
   "requests": {
+    "GET /time.css": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /time/events": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /time/socket": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /time.css": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
